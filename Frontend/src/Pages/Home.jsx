@@ -64,10 +64,20 @@ const Home = () => {
         <div
           className="absolute bottom-0 left-0 my-0 mx-0"
           style={{
-            height: "150px",
-            width: "150px",
+            height: "200px",
+            width: "200px",
             backgroundImage: `radial-gradient(${color} 15%, transparent 16%)`, // Dot size
-            backgroundSize: "33px 33px", // Adjusted for a 3px gap
+            backgroundSize: "20px 20px", // Adjusted for a 3px gap
+            animation: "fade 2s infinite",
+          }}
+        />
+        <div
+          className="absolute top-0 right-0 my-0 mx-0"
+          style={{
+            height: "200px",
+            width: "200px",
+            backgroundImage: `radial-gradient(${color} 15%, transparent 16%)`, // Dot size
+            backgroundSize: "20px 20px", // Adjusted for a 3px gap
             animation: "fade 2s infinite",
           }}
         />
