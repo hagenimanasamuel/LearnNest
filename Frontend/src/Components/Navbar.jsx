@@ -1,13 +1,16 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import '../../src/index.css';
+import logo from '/img/logo/kid-logo.png';
 
 function LandingPage() {
   return (
     <div className="bg-gray-50 w-full">
       {/* Navbar with Glassmorphism */}
       <nav className="w-full flex justify-between items-center p-6 bg-white backdrop-blur-md shadow-md sticky top-0 z-50">
-        <div className="text-2xl font-bold text-blue-500">LearnNest</div>
+        <div className="text-2xl font-bold text-blue-500 logo-container">
+          <img src={logo} alt="learnNest logo" className="Logo-img"/>
+        </div>
         <ul className="hidden md:flex space-x-6 text-lg text-blue-500 font-bold text-[20px]">
           <li className="hover:text-indigo-600">
             <a href="#home">Home</a>
