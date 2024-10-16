@@ -1,41 +1,40 @@
-import React from 'react';
-import { Button } from '@mui/material';
-import '../../src/index.css';
-import logo from '/img/logo/kid-logo.png';
 
-function LandingPage() {
+function Navbar() {
   return (
     <div className="bg-gray-50 w-full">
       {/* Navbar with Glassmorphism */}
       <nav className="w-full flex justify-between items-center p-6 bg-white backdrop-blur-md shadow-md sticky top-0 z-50">
-        <div className="text-2xl font-bold text-blue-500 logo-container">
-          <img src={logo} alt="learnNest logo" className="Logo-img"/>
-        </div>
+
         <ul className="hidden md:flex space-x-6 text-lg text-blue-500 font-bold text-[20px]">
           <li className="hover:text-indigo-600">
-            <a href="#home">Home</a>
+            <Link to="/">Home</Link> {/* Link to Home */}
           </li>
           <li className="hover:text-indigo-600">
-            <a href="#gallery">Gallery</a>
+            <Link to="/gallery">Gallery</Link> {/* Link to Gallery */}
           </li>
           <li className="hover:text-indigo-600">
-            <a href="#about">About</a>
+            <Link to="/about">About</Link> {/* Link to About */}
           </li>
           <li className="hover:text-indigo-600">
-            <a href="#contact">Contact Us</a>
+            <Link to="/contact">Contact Us</Link> {/* Link to Contact */}
           </li>
         </ul>
-        <Button
-          variant="contained"
-          color="primary"
-          size="large"
-          className="shadow-lg animate-bounce"
-        >
-          Create Account
-        </Button>
+
+        {/* Button to Create Account */}
+        <Link to="/greetings">
+          {" "}
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            className="shadow-lg animate-bounce"
+          >
+            Create Account
+          </Button>
+        </Link>
       </nav>
     </div>
   );
 }
 
-export default LandingPage;
+export default Navbar;
