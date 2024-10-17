@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
+import LearningKid from "/videos/video1.mp4";
 
 const Home = () => {
   const [color, setColor] = useState(getRandomColor());
-  const [showCharacter, setShowCharacter] = useState(false); // State to control character visibility
-  const [showMessage, setShowMessage] = useState(false); // State to control message visibility
+  const [showCharacter, setShowCharacter] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
 
-  // Function to generate a random color
   function getRandomColor() {
     const letters = "0123456789ABCDEF";
     let color = "#";
@@ -15,59 +15,71 @@ const Home = () => {
     return color;
   }
 
-  // Change the color every 2 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setColor(getRandomColor());
-    }, 2000); // Change color every 2 seconds
+    }, 2000);
 
-    // Show character after 5 seconds
     const characterTimer = setTimeout(() => {
       setShowCharacter(true);
-    }, 5000); // 5 seconds
+    }, 5000);
 
-    // Show message and slide it out in a loop
     const messageTimer = setInterval(() => {
       if (showCharacter) {
-        setShowMessage(true); // Show message
-        // Hide message after 10 seconds and then slide out character after 5 seconds
+        setShowMessage(true);
         const hideMessageTimer = setTimeout(() => {
-          setShowMessage(false); // Hide message
-          // Slide out character after the message hides
+          setShowMessage(false);
           const slideOutTimer = setTimeout(() => {
-            setShowCharacter(false); // Slide out character after 5 seconds
-          }, 5000); // 5 seconds
+            setShowCharacter(false);
+          }, 5000);
 
-          return () => clearTimeout(slideOutTimer); // Cleanup
-        }, 10000); // 10 seconds
+          return () => clearTimeout(slideOutTimer);
+        }, 10000);
 
-        return () => clearTimeout(hideMessageTimer); // Cleanup
+        return () => clearTimeout(hideMessageTimer);
       }
-    }, 15000); // Every 15 seconds after character appears
+    }, 15000);
 
     return () => {
-      clearInterval(interval); // Cleanup on component unmount
-      clearTimeout(characterTimer); // Cleanup character timer
-      clearInterval(messageTimer); // Cleanup message timer
+      clearInterval(interval);
+      clearTimeout(characterTimer);
+      clearInterval(messageTimer);
     };
   }, [showCharacter]);
 
   return (
     <>
       <div
-        className="relative flex-grow flex flex-col items-center justify-center text-center bg-[#e8f7ff] overflow-hidden"
-        style={{ height: "calc(100vh - 92.5px)" }} // Adjust height based on navbar height
+        className="app-container relative flex-grow flex flex-col items-center justify-center text-center bg-[#e8f7ff] overflow-hidden"
+        style={{
+          height: "calc(100vh - 92.5px)",
+          backgroundImage: "url('/background.svg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       >
-        <h1 className="text-4xl font-bold text-indigo-600">Hello World</h1>
-
-        {/* Dotted Rectangle at bottom-left */}
+        {/* Video on left side */}
+        <video
+          src={LearningKid}
+          autoPlay
+          muted
+          loop
+          className="absolute"
+          style={{
+            left: "50px",
+            bottom: "0",
+            height: "700px",
+            width: "200px",
+            transform: "rotate(-15deg)"
+          }}
+        />
         <div
           className="absolute bottom-0 left-0 my-0 mx-0"
           style={{
             height: "200px",
             width: "200px",
-            backgroundImage: `radial-gradient(${color} 15%, transparent 16%)`, // Dot size
-            backgroundSize: "20px 20px", // Adjusted for a 3px gap
+            backgroundImage: `radial-gradient(${color} 15%, transparent 16%)`,
+            backgroundSize: "20px 20px",
             animation: "fade 2s infinite",
           }}
         />
@@ -76,16 +88,17 @@ const Home = () => {
           style={{
             height: "200px",
             width: "200px",
-            backgroundImage: `radial-gradient(${color} 15%, transparent 16%)`, // Dot size
-            backgroundSize: "20px 20px", // Adjusted for a 3px gap
+            backgroundImage: `radial-gradient(${color} 15%, transparent 16%)`,
+            backgroundSize: "20px 20px",
             animation: "fade 2s infinite",
           }}
         />
 
-        {/* Cartoon Character with slide-in animation */}
         {showCharacter && (
           <div
-            className={`absolute bottom-10 left-10 ${showMessage ? 'animate-slide-out' : 'animate-slide-in'}`} // Position and animation
+            className={`absolute bottom-10 left-10 ${
+              showMessage ? "animate-slide-out" : "animate-slide-in"
+            }`}
             style={{ width: "100px", height: "100px" }}
           >
             <svg
@@ -96,72 +109,127 @@ const Home = () => {
               <circle cx="50" cy="50" r="40" fill="limegreen" />
               <circle cx="35" cy="40" r="5" fill="black" />
               <circle cx="65" cy="40" r="5" fill="black" />
-              <path d="M35 60 Q50 80 65 60" stroke="black" strokeWidth="5" fill="none" />
+              <path
+                d="M35 60 Q50 80 65 60"
+                stroke="black"
+                strokeWidth="5"
+                fill="none"
+              />
             </svg>
 
-            {/* Message above the character's head */}
             {showMessage && (
               <div
                 className="absolute top-0 right-0 transform translate-x-2 -translate-y-8 bg-blue-500 text-white px-2 py-1 rounded"
-                style={{ zIndex: 1 }} // Ensure message is above other elements
+                style={{ zIndex: 1 }}
               >
                 Hello, I'm happy to have you here!
               </div>
             )}
           </div>
         )}
+
+        {/* Centered Welcome Message with Glassmorphism */}
+        <div
+          className="relative z-10 p-8 rounded-lg shadow-lg bg-white bg-opacity-20 backdrop-blur-lg"
+          style={{
+            width: "45rem",
+            height: "20rem",
+            textAlign: "center",
+            overflow: "hidden",
+            position: "relative",
+            border: "2px solid transparent",
+            animation: "borderAnimation 7s linear infinite, scaleUp 0.5s ease-in-out infinite alternate",
+          }}
+        >
+          <h1 className="text-4xl text-blue-800 font-bold mb-4 animate-fade-in pb-5">Welcome to LearnNest</h1>
+          <p className="mb-2 animate-fade-in text-2xl">We are the best in online teaching!</p>
+          <p className="mb-2 animate-fade-in">Our courses are designed to meet your needs.</p>
+          <p className="animate-fade-in">Join us today and start learning!</p>
+
+          {/* Moving border effect */}
+          <div className="moving-border" style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: -1 }} />
+        </div>
+
+        {/* Animation for top left side */}
+        <div className="loader absolute top-14">
+          <div className="box box-1">
+            <div className="side-left"></div>
+            <div className="side-right"></div>
+            <div className="side-top"></div>
+          </div>
+          <div className="box box-2">
+            <div className="side-left"></div>
+            <div className="side-right"></div>
+            <div className="side-top"></div>
+          </div>
+          <div className="box box-3">
+            <div className="side-left"></div>
+            <div className="side-right"></div>
+            <div className="side-top"></div>
+          </div>
+          <div className="box box-4">
+            <div className="side-left"></div>
+            <div className="side-right"></div>
+            <div className="side-top"></div>
+          </div>
+        </div>
+
+        <div className="container absolute" style={{ bottom: "10px" }}>
+          <div className="phone"></div>
+          <div className="phone"></div>
+          <div className="phone"></div>
+        </div>
       </div>
 
       {/* CSS Animations */}
       <style>
         {`
-          @keyframes fade {
+          @keyframes borderAnimation {
             0% {
-              opacity: 1;
+              border-color: rgba(255, 0, 0, 1);
+            }
+            25% {
+              border-color: rgba(0, 255, 0, 1);
             }
             50% {
-              opacity: 0.5;
+              border-color: rgba(0, 0, 255, 1);
+            }
+            75% {
+              border-color: rgba(255, 255, 0, 1);
             }
             100% {
-              opacity: 1;
+              border-color: rgba(255, 0, 0, 1);
             }
           }
-          @keyframes slide-in {
+
+          @keyframes scaleUp {
             0% {
-              transform: translateX(-100%);
+              transform: scale(1);
+            }
+            100% {
+              transform: scale(1.01);
+            }
+          }
+
+          @keyframes fadeIn {
+            0% {
               opacity: 0;
             }
             100% {
-              transform: translateX(0);
               opacity: 1;
             }
           }
-          @keyframes slide-out {
-            0% {
-              transform: translateX(0);
-              opacity: 1;
-            }
-            100% {
-              transform: translateX(-100%);
-              opacity: 0;
-            }
+
+          .moving-border {
+            border: none;
+            border-radius: 10px;
+            animation: borderAnimation 10s linear infinite;
           }
-          .animate-slide-in {
-            animation: slide-in 1s forwards; // Slide in animation
-          }
-          .animate-slide-out {
-            animation: slide-out 1s forwards; // Slide out animation
-          }
-          @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-              transform: translateY(0);
-            }
-            40% {
-              transform: translateY(-15px);
-            }
-            60% {
-              transform: translateY(-10px);
-            }
+
+          .animate-fade-in {
+            animation: fadeIn 10s forwards;
+            opacity: 0;
+            animation-delay: 0.5s; /* Optional: delay for staggered effect */
           }
         `}
       </style>
