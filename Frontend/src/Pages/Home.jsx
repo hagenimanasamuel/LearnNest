@@ -142,9 +142,9 @@ const Home = () => {
           }}
         >
           <h1 className="text-4xl text-blue-800 font-bold mb-4 animate-fade-in pb-5">Welcome to LearnNest</h1>
-          <p className="mb-2 animate-fade-in text-2xl">We are the best in online teaching!</p>
-          <p className="mb-2 animate-fade-in">Our courses are designed to meet your needs.</p>
-          <p className="animate-fade-in">Join us today and start learning!</p>
+          <p className="mb-2 animate-fade-in text-2xl text-gray-800">We are the best in online teaching!</p>
+          <p className="mb-2 animate-fade-in text-gray-800">Our courses are designed to meet your needs.</p>
+          <p className="animate-fade-in text-gray-800">Join us today and start learning!</p>
 
           {/* Moving border effect */}
           <div className="moving-border" style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: -1 }} />
@@ -180,6 +180,54 @@ const Home = () => {
           <div className="phone"></div>
         </div>
       </div>
+
+      {/* Animation for the top right */}
+<div class="main relative -top-[7rem] ml-[45rem] flex justify-center items-center">
+  <div class="up">
+    <div class="loaders">
+      <div class="loaderr"></div>
+      <div class="loaderr"></div>
+      <div class="loaderr"></div>
+      <div class="loaderr"></div>
+      <div class="loaderr"></div>
+      <div class="loaderr"></div>
+      <div class="loaderr"></div>
+      <div class="loaderr"></div>
+      <div class="loaderr"></div>
+      <div class="loaderr"></div>
+    </div>
+    <div class="loadersBB">
+      <div class="loaderAA">
+        <div class="ball0"></div>
+      </div>
+      <div class="loaderAA">
+        <div class="ball1"></div>
+      </div>
+      <div class="loaderAA">
+        <div class="ball2"></div>
+      </div>
+      <div class="loaderAA">
+        <div class="ball3"></div>
+      </div>
+      <div class="loaderAA">
+        <div class="ball4"></div>
+      </div>
+      <div class="loaderAA">
+        <div class="ball5"></div>
+      </div>
+      <div class="loaderAA">
+        <div class="ball6"></div>
+      </div>
+      <div class="loaderAA">
+        <div class="ball7"></div>
+      </div>
+      <div class="loaderAA">
+        <div class="ball8"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
       {/* CSS Animations */}
       <style>
