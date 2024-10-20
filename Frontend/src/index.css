@@ -356,7 +356,6 @@ body {
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
   width: 60vw; /* 60% of the viewport width */
   height: 70vh; /* 70% of the viewport height */
-  margin: 20px auto; /* Centering the board */
   text-align: center; /* Centering text */
   display: flex; /* Flexbox for centering content */
   justify-content: center; /* Center content horizontally */
